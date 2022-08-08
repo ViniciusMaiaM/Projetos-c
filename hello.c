@@ -1,8 +1,6 @@
-#include <stdio.h> //biblioteca padrão de input e output
+#include <stdio.h> //biblioteca padrão de input
 
 int main() {
   printf("Hello World!\n");
-  f();
   return 0;
 }
-
