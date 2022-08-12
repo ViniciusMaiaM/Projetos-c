@@ -34,7 +34,6 @@ scanf(Leitura de dados inseridos / não consegue ler após espaços em branco)
 
 void tela()
 {
-  int esc;
   printf("-------------------------\n");
   printf("---------Layout----------\n");
   printf("-------------------------\n");
@@ -55,9 +54,25 @@ int id(){
   return idade;
 }
 
-int main(){
+float pe(){
+  float peso;
+  printf("Qual o seu peso?\n");
+  scanf("%f",peso);
+  return peso;
+}
+
+double pi(){
+  double vpi;
+  printf("Insira o valor de PI\n");
+  scanf("%lf",vpi);
+  return vpi;
+}
+
+int main(nome,idade,peso,vpi){
   tela();
   name();
   id();
+  pe();
+  pi();
   return 0;
 }
