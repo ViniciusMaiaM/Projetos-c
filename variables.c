@@ -3,7 +3,7 @@
 Classificação de funções/variaveis:
     void (Séria um espaço vazio, nesse tipo de funcão não necessariamente precisa de um retorno)
 
-    char (Um único caracter / %c ): 
+    char (Um único caracter / %c ):
       char v[] = "eita" (cria um array de caracteres/%s)
 
       char v = 100 (char podem representar valores numericos de -128 até 127 / %d para representar o valor númerico ou %c para representar o seu valor na tabela ascii / possui 7 bits para o valor e 1 de sinal)
@@ -27,5 +27,37 @@ Classificação de funções/variaveis:
       int v; (Declarando)
       v = 1234; (Inicializando)
 
-scanf(Leitura de dados inseridos)
+    constant = valor fixo que não pode ser durante a execução do programa
+
+scanf(Leitura de dados inseridos / não consegue ler após espaços em branco)
 */
+
+void tela()
+{
+  int esc;
+  printf("-------------------------\n");
+  printf("---------Layout----------\n");
+  printf("-------------------------\n");
+}
+
+char name(){
+  char *name;
+  printf("Qual o seu nome?\n");
+  // scanf(" %s",name);
+  fgets(name, 25, stdin);
+  return name;
+}
+
+int id(){
+  int idade;
+  printf("Qual a sua idade?\n");
+  scanf("%d",idade);
+  return idade;
+}
+
+int main(){
+  tela();
+  name();
+  id();
+  return 0;
+}
