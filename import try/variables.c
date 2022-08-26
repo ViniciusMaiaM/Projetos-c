@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include "variables.h"
+
 /*
 Classificação de funções/variaveis:
     void (Séria um espaço vazio, nesse tipo de funcão não necessariamente precisa de um retorno)
@@ -30,49 +33,45 @@ Classificação de funções/variaveis:
     constant = valor fixo que não pode ser durante a execução do programa
 
 scanf(Leitura de dados inseridos / não consegue ler após espaços em branco)
+fgets (Faz a leitura com os espaços em brancos)
 */
 
-void tela()
+void tela(void)
 {
   printf("-------------------------\n");
   printf("---------Layout----------\n");
   printf("-------------------------\n");
 }
 
-char name(){
-  char *name;
+char name()
+{
+  char name[25];
   printf("Qual o seu nome?\n");
   // scanf(" %s",name);
   fgets(name, 25, stdin);
   return name;
 }
 
-int id(){
+int id()
+{
   int idade;
   printf("Qual a sua idade?\n");
-  scanf("%d",idade);
+  scanf("%d", idade);
   return idade;
 }
 
-float pe(){
+float pe()
+{
   float peso;
   printf("Qual o seu peso?\n");
-  scanf("%f",peso);
+  scanf("%f", peso);
   return peso;
 }
 
-double pi(){
+double pi()
+{
   double vpi;
   printf("Insira o valor de PI\n");
-  scanf("%lf",vpi);
+  scanf("%lf", vpi);
   return vpi;
-}
-
-int main(nome,idade,peso,vpi){
-  tela();
-  name();
-  id();
-  pe();
-  pi();
-  return 0;
 }
