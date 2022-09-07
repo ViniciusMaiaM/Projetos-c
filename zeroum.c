@@ -24,9 +24,9 @@ int main(){
 }
 
 int play(void){
-    int play;
-    play = rand()%2;
-    return play;
+    int jogada;
+    jogada = rand()%2;
+    return jogada;
 }
 
 
