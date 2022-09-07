@@ -68,3 +68,14 @@ int vitoria(int j1, int j2, int j3){
         return 4;
     }
 }   
+
+void final(int x){
+    if (x != 4){
+        printf("\nO jogador %d venceu!\n",x);
+    }
+    
+    else{
+        printf("\nO jogo terminou em empate!\n");
+    }
+}
+
