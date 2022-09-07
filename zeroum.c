@@ -50,3 +50,21 @@ int play(void){
     play = rand()%2;
     return play;
 }
+
+int vitoria(int j1, int j2, int j3){
+    if (j1 != j2 && j2 == j3 ){
+        return 1;
+    }
+
+    else if (j1 != j2 && j1 == j3){
+        return 2;
+    }
+
+    else if (j1 == j2 && j1 != j3){
+        return 3;
+    }
+
+    else{
+        return 4;
+    }
+}   
