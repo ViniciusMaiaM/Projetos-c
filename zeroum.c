@@ -14,15 +14,15 @@ int main(){
     int escolha;
     char jogar;
     play();
-    printf("\nQuantos jogadores irão jogar?\n");
-    scanf("%d",&escolha);
-    do{ 
+    while (jogar != 'N'){ 
+        printf("\nQuantos jogadores irão jogar?\n");
+        scanf("%d",&escolha);
         esc(escolha);
         printf("\nQuer jogar novamente[S/N]? ");
         scanf("%c",&jogar);
         getchar();
         putchar(toupper(jogar));
-    }while (jogar != 'N');
+    }
     return 0;
 }
 
