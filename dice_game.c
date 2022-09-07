@@ -8,6 +8,9 @@ int player(void);
 int pc(void);
 
 int main (void){
+    system("cls||clear");
+    srand(time(NULL));
+    int sum_player = 0;
     return 0;
 }
 
@@ -74,4 +77,19 @@ void drawn(int choose){
         break;
     }
 
+}
+
+int player(){
+    int sum_player = 0;
+    int save;
+    printf("It's player time!\n_____________________\n");
+    for (int i = 0; i <= 1; i++){
+        printf("\nPress enter to play:");
+        getchar();
+        save = dice();
+        drawn(save);
+        sum_player += save;
+    }
+    printf("\nThe Sum of the player's dice is: %d\n",sum_player);
+    return sum_player;
 }
