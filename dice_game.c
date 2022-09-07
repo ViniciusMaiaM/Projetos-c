@@ -11,6 +11,18 @@ int main (void){
     system("cls||clear");
     srand(time(NULL));
     int sum_player = 0;
+    int sum_pc = 0;
+    sum_player = player();
+    sum_pc = pc();
+    if (sum_player > sum_pc){
+        printf("The player Won with a score of %d points\n",sum_player);
+    }
+    else if (sum_player < sum_pc){
+        printf("The pc Won with a score of %d points\n",sum_pc);
+    }
+    else{
+        printf("Tie!");
+    }
     return 0;
 }
 
@@ -93,3 +105,17 @@ int player(){
     printf("\nThe Sum of the player's dice is: %d\n",sum_player);
     return sum_player;
 }
+
+int pc(){
+    int sum_pc = 0;
+    int savep;
+    printf("\nIt's computer time\n_____________________\n");
+    for (int i = 0; i <= 1; i++){
+        savep = dice();
+        drawn(savep);
+        sum_pc += savep;
+    }
+    printf("\nThe Sum of pc's dice is: %d\n",sum_pc);
+    return sum_pc;
+}
+
