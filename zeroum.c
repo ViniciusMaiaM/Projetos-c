@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
+
 int play (void);
 int vitoria (int j1,int j2,int j3);
 void final(int x);
 void esc (int escolha);
+int toupper();
 
 int main(){
     srand(time(NULL));
@@ -18,8 +21,8 @@ int main(){
         printf("\nQuer jogar novamente[S/N]? ");
         scanf("%c",&jogar);
         getchar();
-        toupper(jogar);
-    }while (jogar != "N");
+        putchar(toupper(jogar));
+    }while (jogar != 'N');
     return 0;
 }
 
