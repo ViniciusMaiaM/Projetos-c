@@ -10,6 +10,7 @@ void esc (int escolha);
 int toupper();
 
 int main(){
+    system("clear||cls");
     srand(time(NULL));
     int escolha;
     char jogar;
@@ -26,8 +27,8 @@ int main(){
             break;
         }
     }
+    printf("\nFim do jogo, até a proxima!\n");
     return 0;
-    pritnf("Fim do jogo, até a proxima!");
 }
 
 int play(void){
@@ -57,7 +58,7 @@ int vitoria(int j1, int j2, int j3){
 
 void final(int x){
     if (x != 4){
-        printf("\nO jogador 1 venceu!\n");
+        printf("\nO jogador %d venceu!\n",x);
     }
     
     else{
