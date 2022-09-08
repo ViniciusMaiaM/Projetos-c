@@ -1,7 +1,30 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+int meses[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+int data_valida(int dia, int mes, int ano);
+int bissexto(int ano);
 
 int main(){
+    system("clear||cls");
+    int dia;int mes;int ano;
+    printf("\nInsira o dia: ");
+    scanf("%d",&dia);
+    printf("\nInsira o mes: ");
+    scanf("%d",&mes);
+    printf("\nInsira o ano: ");
+    scanf("%d",&ano);
+    while (!data_valida(dia,mes,ano)){
+        printf("\nData Valida, insira novamente...\n");
+        printf("\nInsira o dia: ");
+        scanf("%d",&dia);
+        printf("\nInsira o mes: ");
+        scanf("%d",&mes);
+        printf("\nInsira o ano: ");
+        scanf("%d",&ano);
+    }
 
+    printf("A data %d/%d/%d é válida!\n",dia,mes,ano);
     return 0;
 }
 
@@ -21,11 +44,11 @@ int data_valida(int dia, int mes, int ano){
     }
     
     else if (mes == 4 || mes == 6 || mes == 9 || mes == 11){
-        md = 30;
+        md = meses[mes-1];
     }
 
     else{
-        md = 31;
+        md = meses[mes-1];
     }
 
     if (dia > md){
