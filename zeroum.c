@@ -22,8 +22,12 @@ int main(){
         scanf("%c",&jogar);
         getchar();
         putchar(toupper(jogar));
+        if ((jogar = 'N')){
+            break;
+        }
     }
     return 0;
+    pritnf("Fim do jogo, até a proxima!");
 }
 
 int play(void){
