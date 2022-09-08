@@ -80,7 +80,7 @@ int dia_ano(int dia, int mes, int ano){
             soma += meses[i];
         }
         soma += dia-1;
-        if (mes < 2){
+        if (mes > 2){
             soma ++;
         }
         return soma;
