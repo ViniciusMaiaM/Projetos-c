@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct pessoa {
+struct pessoa { //Tipo de dado/variavel que agrupa outras variaveis
     int idade;
     float peso;
     char nome[25];
@@ -21,7 +21,7 @@ int main(){
     s1.idade = id;
     s1.peso = pe;
     strcpy(s1.nome,nam);
-    printf("\nHello %s your age is %d and your weight is %.2f\n",s1.nome,s1.idade,s1.peso);
+    printf("\nHello %s, your age is %d and your weight is %.2f\n",s1.nome,s1.idade,s1.peso);
     return 0;
 }
 
