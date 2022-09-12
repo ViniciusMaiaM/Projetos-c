@@ -18,5 +18,5 @@ int input(){
     scanf("%d",&x);
     printf("Enter the value of y: ");
     scanf("%d",&y);
-    return x > y ? 1 : 0;;
+    return x > y ? 1 : 0;
 }
