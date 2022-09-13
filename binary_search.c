@@ -18,8 +18,8 @@ int main(){
 
     printf("\nNow input the number that you want to find: ");
     scanf("%d",&search);
-    result = binary_search(array,size,search);
 
+    result = binary_search(array,size,search);
     if (result >= 0){
         printf("\nThe number %d is the %d in the array\n",search,result);
     }
@@ -38,12 +38,15 @@ int binary_search(int array[], int size, int num){
         if(array[start] == num){
             return start;
         }
+
         else if(num > array[start]){
             size++;
         }
+
         else{
             size--;
         }
+
     }
     return -1;
 }
