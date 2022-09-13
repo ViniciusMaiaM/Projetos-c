@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int binary_search(int array[], int size, int num);
+int binary_search(int array[], int size, int count, int num);
 
 int main(){
     int size;
@@ -19,7 +19,7 @@ int main(){
     printf("\nNow input the number that you want to find: ");
     scanf("%d",&search);
 
-    result = binary_search(array,size,search);
+    result = binary_search(array,size,0,search);
     if (result >= 0){
         printf("\nThe number %d is the %d in the array\n",search,result);
     }
@@ -30,21 +30,19 @@ int main(){
     return 0;
 }
 
-int binary_search(int array[], int size, int num){
-    int count = 0;
-
+int binary_search(int array[], int size, int count, int num){
     while(count != size){
-        int start = (count+size)/2;
+        int start = count + (count-size)/2;
         if(array[start] == num){
             return start;
         }
 
         else if(num > array[start]){
-            size++;
+            count = start+1;
         }
 
         else{
-            size--;
+            size = start-1;
         }
 
     }
