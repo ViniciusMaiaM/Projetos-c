@@ -30,6 +30,7 @@ int main(){
 
     return 0;
 }
+
 int binary_search(int array[], int size, int count,int num){
     if (size >= count){
         int start = count + (size - count)/2;
