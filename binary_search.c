@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int binary_search(int array[], int size, int count, int num);
+int binary_search(int array[], int higher, int lower, int num);
 
 int main(){
     int size;
@@ -30,19 +30,19 @@ int main(){
     return 0;
 }
 
-int binary_search(int array[], int size, int count, int num){
-    while(count != size){
-        int start = count + (count-size)/2;
+int binary_search(int array[], int higher, int lower, int num){
+    while(lower != higher){
+        int start = lower + (lower-higher)/2;
         if(array[start] == num){
             return start;
         }
 
         else if(num > array[start]){
-            count = start+1;
+            lower = start+1;
         }
 
         else{
-            size = start-1;
+            higher = start-1;
         }
 
     }

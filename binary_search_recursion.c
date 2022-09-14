@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int binary_search(int array[], int size, int count,int num);
+int binary_search(int array[], int higher, int lower,int num);
 
 int main(){
     int size;
@@ -31,20 +31,20 @@ int main(){
     return 0;
 }
 
-int binary_search(int array[], int size, int count,int num){
-    if (size >= count){
-        int start = count + (size - count)/2;
+int binary_search(int array[], int higher, int lower,int num){ ///Receives array, the highest point of the array, lower and the number that you want to search 
+    if (higher >= lower){
+        int start = lower + (higher - lower)/2;
 
         if(array[start] == num){
             return start;
         }
 
         else if(array[start]>num){
-            return binary_search(array,start-1,count,num);
+            return binary_search(array,start-1,lower,num);
         }
 
         else{
-            return binary_search(array,size,start+1,num);
+            return binary_search(array,higher,start+1,num);
         }
 
     }
