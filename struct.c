@@ -35,3 +35,4 @@ void set_pessoa(pessoa *p, char name[25], int age, float weight){
     p -> weight = weight;
     strcpy( p-> name,name);
 }
+//The (*p).age and p -> weight are equivalent
