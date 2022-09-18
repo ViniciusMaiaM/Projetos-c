@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int binary_search(int array[], int higher, int lower,int num);
+void sort(int list[], int size);
 
 int main(){
     int size;
@@ -16,6 +17,7 @@ int main(){
         scanf("%d",&array[i]);
     }
 
+    sort(array,size);
     printf("\nNow input the number that you want to find: ");
     scanf("%d",&search);
 
@@ -49,4 +51,18 @@ int binary_search(int array[], int higher, int lower,int num){ ///Receives array
 
     }
     return -1;
+}
+
+
+void sort(int list[], int size) //Ordenação manual de uma array
+{
+    for (int i = 0; i < size - 1; i++){
+        for (int j = 0; j < size - 1; j++){
+            if (list[j] > list[j + 1]){
+            int save = list[j];
+            list[j] = list[j + 1];
+            list[j + 1] = save;
+            }
+        }
+    }
 }
