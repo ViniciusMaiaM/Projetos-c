@@ -25,7 +25,7 @@ int main(){
     return 0;
 }
 
-int compare(char first_noun[],char second_noun[]){
+int compare(char first_noun[],char second_noun[]){ //comparação de string
     int var = strcmp(first_noun, "chicken");
     int var2 = strcmp(second_noun,"chick");
     

@@ -58,7 +58,7 @@ int data_valida(int dia, int mes, int ano){
     return 1;
 }
 
-int bissexto (int ano){
+int bissexto (int ano){ 
     if ((ano % 4 == 0) && (ano % 100 != 0)){
         return 1;
     }

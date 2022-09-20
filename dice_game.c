@@ -91,7 +91,7 @@ void drawn(int choose){
 
 }
 
-int player(){
+int player(){ //função de soma dos dados do player
     int sum_player = 0;
     int save;
     printf("It's player time!\n_____________________\n");

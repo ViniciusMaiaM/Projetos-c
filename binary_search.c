@@ -30,7 +30,7 @@ int main(){
     return 0;
 }
 
-int binary_search(int array[], int higher, int lower, int num){
+int binary_search(int array[], int higher, int lower, int num){ 
     while(lower != higher){
         int start = lower + (lower-higher)/2;
         if(array[start] == num){

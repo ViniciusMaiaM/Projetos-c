@@ -38,7 +38,7 @@ int play(void){
 }
 
 
-int vitoria(int j1, int j2, int j3){
+int vitoria(int j1, int j2, int j3){ //condições de vitória
     if (j1 != j2 && j2 == j3 ){
         return 1;
     }
@@ -56,7 +56,7 @@ int vitoria(int j1, int j2, int j3){
     }
 }
 
-void final(int x){
+void final(int x){ 
     if (x != 4){
         printf("\nO jogador %d venceu!\n",x);
     }
