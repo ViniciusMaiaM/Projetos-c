@@ -22,5 +22,6 @@ int main()
 }
 
 /*
-Não se pode simplesmente trocar as strings nesse tipo de ocasião, é necessário utilizar a função strcpy que faz essa mudança
+Não se pode simplesmente trocar as strings nesse tipo de ocasião,
+é necessário utilizar a função strcpy que faz essa mudança
 */
