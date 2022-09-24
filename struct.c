@@ -33,6 +33,6 @@ void print_struct(pessoa p){
 void set_pessoa(pessoa *p, char name[25], int age, float weight){
     (*p).age = age;
     p -> weight = weight; //In that way we can pass the variable to the struct
-    strcpy( p-> name,name);
+    strcpy( p -> name,name);
 }
 //The (*p).age and p -> weight are equivalent
