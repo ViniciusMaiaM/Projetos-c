@@ -19,3 +19,12 @@ int comb(int n, int k){
     return(fat(n)/((fat(k)*fat(n-k))));
 }
 
+void fibo(int size){
+    int t1 = 0, t2 = 1, save;
+    for (int i = 0; i <= size; i++){
+        printf("%d | ",t1);
+        save = t1;
+        t1 = t2;
+        t2 += save;
+    }
+}
