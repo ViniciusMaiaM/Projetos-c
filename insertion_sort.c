@@ -1,15 +1,15 @@
 #include <stdio.h>
 
 void sort(int array[], int size);
+void show(int array[], int size);
+
 
 int main(){
     int size;
-    int search;
-    int result;
 
     printf("Input the size of the array: ");
     scanf("%d",&size);
-    int array[size];
+    int array[size-1];
 
     for(int i = 0; i < size; i++){
         printf("Input the %d term of your array: ",i+1);
@@ -18,7 +18,7 @@ int main(){
 
     sort(array, size);
 
-    
+    show(array,size);
 
     return 0;
 }
@@ -26,11 +26,11 @@ int main(){
 void sort(int array[], int size){
     int save;
 
-    for (int i = 1; i <= size; i++){
+    for (int i = 1; i < size; i++){
         save =  array[i];
         int j = i-1;
 
-        while (j >= 0 && array[i] > save){
+        while (j >= 0 && array[j] > save){
             array[j+1] = array[j];
             j--;
         }
@@ -38,4 +38,11 @@ void sort(int array[], int size){
         array[j+1] = save;
     }
 
+}
+
+void show(int array[], int size){
+    for(int i = 0; i < size; i++){
+        printf("| %d |\n",array[i]);
+    }
+    printf("\n");
 }
