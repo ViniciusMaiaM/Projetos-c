@@ -9,7 +9,7 @@ int main(){
 
     printf("Input the size of the array: ");
     scanf("%d",&size);
-    int array[size];
+    int array[size-1];
 
     for(int i = 0; i < size; i++){
         printf("Input the %d term of your array: ",i+1);
