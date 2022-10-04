@@ -3,7 +3,7 @@
 int main(){
     int size = 0;
     float temp = 0, med = 0.0;
-    printf("Input the number of values of temp: ");
+    printf("Input the number of temperatures: ");
     scanf("%d",&size);
 
     printf("Now input the values:\n");
