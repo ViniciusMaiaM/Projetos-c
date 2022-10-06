@@ -5,69 +5,48 @@
 int valida_cpf(char cpf[]);
 
 int main(){
-    char cpf[14] = "706.343.734-80";
-    if (!valida_cpf(cpf)){
-        printf("Não");
-        return 0;
+    char cpf[11] = "70634312415";
+    if (valida_cpf(cpf)){
+        printf("\nSim");
     }
     else{
-        printf("Sim");
+        printf("\nNão");
     }
     return 0;
 }
 
 int valida_cpf(char cpf[]){
     int tamanho = strlen(cpf);
-    int cpf_int[11];
-    int tam = sizeof(cpf_int)/sizeof(cpf_int[0]);
+    int cpf_int[tamanho];
+    int soma_dig_um = 0;
+    int soma_dig_dois = 0;
+    int dig1 = 0;
+    int dig2 = 0;
+    int resultado = 0;
+    int resultado2 = 0;
 
-    for (int i = 0; i< tamanho;i++){
-        if (i == 3 || i == 7 || i == 11){
-            continue;
-        }
-
-        cpf_int[i] = cpf[i]-48;
-        printf("\n%d\t",cpf_int[i]);
         //Transformando de char para int
-    }
-        printf("\n%d",tam);
-    
-
-
-    // for(int i = 0; i < tam; i++){
-    //     printf("\n%d\t",cpf_int[i]);
-    // }
-
-    // printf("\n%d\n",tam);
-
-    int soma = 0;
-    for (int i = 0;i<9;i++){
-        soma += cpf_int[i]*(10-i);
+    for (int i = 0; i< 9;i++){
+        cpf_int[i] = cpf[i]-'0';
+        soma_dig_um += cpf_int[i]*(10-i);
+        printf("\n%d",cpf_int[i]);
     }
 
-    int resultado = (soma*10)%11;
+    //Digito um
+    resultado = soma_dig_um%11;
     
-    int dig1;
-    
-    if ((resultado == 10) || (resultado == 11)){
+    if (resultado ==10){
         dig1 = 0;
     }
 
-    else{
-        dig1 = 11-resultado;
-    }
-
-    soma = 0;
-
+    //Digito dois
     for(int i = 0; i < 10; i++){
-        soma += cpf_int[i]*(11-i);
+        soma_dig_dois += cpf_int[i]*(11-i);
     }
 
-    int resultado2 = (soma/11)*11;
-    resultado2 -= soma;
-    int dig2 = 0;
+    resultado2 = soma_dig_dois%11;
 
-    if ((resultado2 == 0) || (resultado2 == 1)){
+    if (resultado2 == 10){
         dig2 = 0;
     }
 
@@ -75,7 +54,8 @@ int valida_cpf(char cpf[]){
         dig2 = 11-resultado2;
     }
 
-    if (dig1 == cpf_int[10] && dig2 == cpf_int[11]){   
+
+    if ((dig1 == cpf_int[9]) && (dig2 == cpf_int[10])){   
         return 1;
     } 
 
