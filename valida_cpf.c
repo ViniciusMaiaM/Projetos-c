@@ -5,19 +5,21 @@
 int valida_cpf(char cpf[]);
 
 int main(){
-    char cpf[11] = "70634312415";
+    char cpf[11] = "70634373480";
+    
     if (valida_cpf(cpf)){
-        printf("\nSim");
+        printf("\nSim\n");
     }
+
     else{
-        printf("\nNão");
+        printf("\nNão\n");
     }
+    
     return 0;
 }
 
 int valida_cpf(char cpf[]){
     int tamanho = strlen(cpf);
-    int cpf_int[tamanho];
     int soma_dig_um = 0;
     int soma_dig_dois = 0;
     int dig1 = 0;
@@ -25,37 +27,43 @@ int valida_cpf(char cpf[]){
     int resultado = 0;
     int resultado2 = 0;
 
-        //Transformando de char para int
-    for (int i = 0; i< 9;i++){
-        cpf_int[i] = cpf[i]-'0';
-        soma_dig_um += cpf_int[i]*(10-i);
-        printf("\n%d",cpf_int[i]);
+    if (tamanho != 11){
+        return 0;
+    }
+    //Transformando de char para int
+    for (int i = 0; i <= 9;i++){
+        soma_dig_um += (cpf[i] - '0')*(10-i);
+        printf("\n%d\n",cpf[i] - '0');
+    }
+    
+    //Digito um
+    resultado = 11 - (soma_dig_um%11);
+    
+    if ((resultado ==10) || (resultado == 11)){
+        resultado = 0;
     }
 
-    //Digito um
-    resultado = soma_dig_um%11;
-    
-    if (resultado ==10){
-        dig1 = 0;
+    else{
+        return 0;
     }
 
     //Digito dois
-    for(int i = 0; i < 10; i++){
-        soma_dig_dois += cpf_int[i]*(11-i);
+    for(int i = 0; i <= 10; i++){
+        soma_dig_dois += (cpf[i]-'0')*(12-i);
     }
 
-    resultado2 = soma_dig_dois%11;
+    resultado2 = (soma_dig_dois*10)%11;
 
-    if (resultado2 == 10){
+    if ((resultado2 == 10) || (resultado2 == 11)){
         dig2 = 0;
     }
 
     else{
-        dig2 = 11-resultado2;
+        return 0;
     }
 
-
-    if ((dig1 == cpf_int[9]) && (dig2 == cpf_int[10])){   
+    printf("\n%d\t%d\t%d\t%d\t",cpf[9]-'0',cpf[10]-'0',resultado,resultado2);
+    if ((resultado == (cpf[9]-'0')) && (resultado2 == (cpf[10]-'0'))){   
         return 1;
     } 
 
