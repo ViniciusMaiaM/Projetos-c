@@ -5,7 +5,7 @@
 int valida_cpf(char cpf[]);
 
 int main(){
-    char cpf[11] = "70634373480";
+    char cpf[11] = "42298432082";
     
     if (valida_cpf(cpf)){
         printf("\nSim\n");
@@ -30,46 +30,59 @@ int valida_cpf(char cpf[]){
     if (tamanho != 11){
         return 0;
     }
+
     //Transformando de char para int
-    for (int i = 0; i <= 9;i++){
-        soma_dig_um += (cpf[i] - '0')*(10-i);
-        printf("\n%d\n",cpf[i] - '0');
+    int mult = 10;
+    for (int i = 0; i < 9;i++){
+        soma_dig_um += ((cpf[i] - '0')*(mult));
+        printf("\t%d\t",cpf[i] - '0');
+        mult --;
     }
-    
+
     //Digito um
-    resultado = 11 - (soma_dig_um%11);
+    resultado = (soma_dig_um*10)11%;
     
-    if ((resultado ==10) || (resultado == 11)){
+    if (resultado == 10){
         resultado = 0;
+    }   
+
+    if (resultado == cpf[9] -'0'){
+        v1 = 1;
     }
 
+    printf("\n%d\t%d",cpf[9]-'0',resultado);
+
+    if (resultado == (cpf[9]-'0')){
+        printf("\nentrou\n");
+        //Digito dois
+        int mult2 = 11;
+        for(int i = 0; i <= 10; i++){
+            soma_dig_dois += ((cpf[i]-'0')*(mult2));
+            mult2 --;
+        }
+
+        resultado2 = (soma_dig_dois*10)%11;
+
+        if (resultado2 == 10){
+            dig2 = 0;
+        }
+
+
+        printf("\n%d\t%d\t%d\t%d\t",cpf[9]-'0',cpf[10]-'0',resultado,resultado2);
+
+        if ((resultado2 == (cpf[10]-'0'))){   
+            return 1;
+        } 
+
+        else{
+            return 0;
+        }
+
+}
     else{
         return 0;
     }
 
-    //Digito dois
-    for(int i = 0; i <= 10; i++){
-        soma_dig_dois += (cpf[i]-'0')*(12-i);
-    }
-
-    resultado2 = (soma_dig_dois*10)%11;
-
-    if ((resultado2 == 10) || (resultado2 == 11)){
-        dig2 = 0;
-    }
-
-    else{
-        return 0;
-    }
-
-    printf("\n%d\t%d\t%d\t%d\t",cpf[9]-'0',cpf[10]-'0',resultado,resultado2);
-    if ((resultado == (cpf[9]-'0')) && (resultado2 == (cpf[10]-'0'))){   
-        return 1;
-    } 
-
-    else{
-        return 0;
-    }
 
 }
 
