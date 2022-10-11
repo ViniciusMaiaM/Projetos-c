@@ -9,7 +9,7 @@ int main(){
 
     printf("Input the size of the array: ");
     scanf("%d",&size);
-    int array[size-1];
+    int array[size];
 
     for(int i = 0; i < size; i++){
         printf("Input the %d term of your array: ",i+1);
@@ -27,8 +27,8 @@ void sort(int array[], int size){
     int save;
 
     for (int i = 1; i < size; i++){
-        save =  array[i];
         int j = i-1;
+        save =  array[i];
 
         while (j >= 0 && array[j] > save){
             array[j+1] = array[j];
@@ -41,6 +41,7 @@ void sort(int array[], int size){
 }
 
 void show(int array[], int size){
+    printf("\n");
     for(int i = 0; i < size; i++){
         printf("| %d |\n",array[i]);
     }
