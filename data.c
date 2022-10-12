@@ -39,6 +39,9 @@ int main(){
     return 0;   
 }
 
+///////////
+//Criado com base no algoritmo do professor Flavius Gorgonio
+//////////
 int data_valida_int(int dia, int mes, int ano){
     int md;
     if (ano < 0 || mes > 12 || mes < 0 || dia < 1){
@@ -69,6 +72,9 @@ int data_valida_int(int dia, int mes, int ano){
     return 1;
 }
 
+///////////
+//Criado com base no algoritmo do professor Flavius Gorgonio
+//////////
 int bissexto (int ano){ 
     if ((ano % 4 == 0) && (ano % 100 != 0)){
         return 1;
@@ -104,5 +110,3 @@ int data_valida_str(char data[]){
 
     return 0;
 }
-
-//Criado com base no algoritmo do professor Flavius Gorgonio
