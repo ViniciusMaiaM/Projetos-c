@@ -1,34 +1,45 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int meses[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-int data_valida(int dia, int mes, int ano);
+int data_valida_int(int dia, int mes, int ano);
+int data_valida_str(char data[]);
 int bissexto(int ano);
 
 int main(){
     system("clear||cls");
-    int dia;int mes;int ano;
-    printf("\nInsira o dia: ");
-    scanf("%d",&dia);
-    printf("\nInsira o mes: ");
-    scanf("%d",&mes);
-    printf("\nInsira o ano: ");
-    scanf("%d",&ano);
-    while (!data_valida(dia,mes,ano)){
-        printf("\nData Valida, insira novamente...\n");
-        printf("\nInsira o dia: ");
-        scanf("%d",&dia);
-        printf("\nInsira o mes: ");
-        scanf("%d",&mes);
-        printf("\nInsira o ano: ");
-        scanf("%d",&ano);
-    }
+    char data[10];
+    // int dia;int mes;int ano;
+    // printf("\nInsira o dia: ");
+    // scanf("%d",&dia);
+    // printf("\nInsira o mes: ");
+    // scanf("%d",&mes);
+    // printf("\nInsira o ano: ");
+    // scanf("%d",&ano);
 
-    printf("A data %d/%d/%d é válida!\n",dia,mes,ano);
-    return 0;
+    // while (!data_valida(dia,mes,ano)){
+    //     printf("\nData Valida, insira novamente...\n");
+    //     printf("\nInsira o dia: ");
+    //     scanf("%d",&dia);
+    //     printf("\nInsira o mes: ");
+    //     scanf("%d",&mes);
+    //     printf("\nInsira o ano: ");
+    //     scanf("%d",&ano);
+    // }
+
+    // printf("A data %d/%d/%d é válida!\n",dia,mes,ano);
+    
+    printf("Insira sua data no formato (xx/xx/xxxx): \n");
+    scanf("%s",data);
+    while(!data_valida_str(data)){
+        printf("\nData invalida, insira uma data valida no formato (xx/xx/xxxx): ");
+        scanf("%s",data);
+    }
+    return 0;   
 }
 
-int data_valida(int dia, int mes, int ano){
+int data_valida_int(int dia, int mes, int ano){
     int md;
     if (ano < 0 || mes > 12 || mes < 0 || dia < 1){
         return 0;
@@ -72,4 +83,26 @@ int bissexto (int ano){
     }
 }
 
-//Criado com base no algoritmo do professor flavius
+int data_valida_str(char data[]){
+    int dia, mes, ano;
+
+    if (strlen(data) != 10){
+        return 0;
+    }
+
+    if (data[2] != '/' || data[5] != '/'){
+        return 0;
+    }
+
+    dia = ((data[0] - '0') * 10) + (data[1] - '0');
+    mes = ((data[3] - '0') * 10) + (data[4] - '0');
+    ano = ((data[6] - '0') * 1000) + ((data[7] - '0') * 100) + ((data[8] - '0') * 10) + (data[9] - '0');
+    
+    if(data_valida_int(dia,mes,ano)){
+        return 1;
+    }
+
+    return 0;
+}
+
+//Criado com base no algoritmo do professor Flavius Gorgonio
