@@ -18,24 +18,22 @@ int main(){
 
 int valida_email(char email[]){
 
-    int cont = 0, arroba = 0, pont = 0;
+    int arroba = 0, pont = 0;
 
     if (strlen(email) > 0){
         for(int i = 0; i < strlen(email); i++){
             
             if(email[i] == '@'){
                 arroba ++;
-                cont++;
             }
 
             else if(email[i] == '.'){
-                cont ++;
                 pont++;
 
             }
         }
 
-        if(arroba == 1 && pont <= 4){
+        if(arroba == 1 && pont!= 0){
             return 1;
         }
 
