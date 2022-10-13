@@ -5,7 +5,7 @@ int valida_email(char email[]);
 
 int main(){
 
-    char email[] = {"teste@.com.br"};
+    char email[] = {"vinicius.maia.706@ufrn.edu.br"};
 
     if(valida_email(email)){
         printf("\nDeu certo!\n");
@@ -19,7 +19,7 @@ int main(){
 int valida_email(char email[]){
 
     int cont = 0, arroba = 0, pont = 0;
-    
+
     if (strlen(email) > 0){
         for(int i = 0; i < strlen(email); i++){
             
@@ -35,7 +35,7 @@ int valida_email(char email[]){
             }
         }
 
-        if(arroba == 1 && pont == 2){
+        if(arroba == 1 && pont <= 4){
             return 1;
         }
 
