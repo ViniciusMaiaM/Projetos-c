@@ -23,13 +23,14 @@ int main(){
 }
 
 int valida_cel(char celular[]){
+    
     int tam = strlen(celular);
+    int ddd = ((celular[0] - '0') *10) + (celular[1] - '0');
 
     if (tam != 11){
         return 0;
     }
 
-    int ddd = ((celular[0] - '0') *10) + (celular[1] - '0');
 
     if(!busca_ddd(ddd)){
         return 0;
