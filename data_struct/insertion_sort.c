@@ -28,14 +28,13 @@ void sort(int array[], int size){
 
     for (int i = 1; i < size; i++){
         int j = i-1;
-        save =  array[i];
 
-        while (j >= 0 && array[j] > save){
+        while (j >= 0 && array[j] > array[i]){
             array[j+1] = array[j];
             j--;
         }
 
-        array[j+1] = save;
+        array[j+1] = array[i];
     }
 
 }

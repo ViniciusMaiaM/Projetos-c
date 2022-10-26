@@ -34,7 +34,7 @@ int main(){
     return 0;
 }
 
-int binary_search(int array[], int higher, int lower,int num){ ///Receives array, the highest point of the array, lower and the number that you want to search 
+int binary_search(int array[], int higher, int lower,int num){ ///Receives array with the highest point of the array, the lowest and the number that you want to search 
     if (higher >= lower){
         int start = lower + (higher - lower)/2;
 
