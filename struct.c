@@ -1,38 +1,37 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct{
+typedef struct pessoa Pessoa;
+struct pessoa{
     char name[25];
     int age;
     float weight;
-}pessoa;
+};
 //Using just the struct i do need to call "struct pessoa" everytime
 //Utilizing the typedef with struct there will be no need to call struct everytime
 
-void print_struct(pessoa p);
-void set_pessoa(pessoa *p, char name[25], int age, float weight );
+void print_struct(const Pessoa* p);
+Pessoa* set_pessoa();
 
 int main(){
-    pessoa test;
-    char nome[25];int ida; float pes;
-    printf("Input your name: ");
-    scanf("%s",nome);
-    printf("\nInput your age: ");
-    scanf("%d",&ida);
-    printf("\nInput your weight: ");
-    scanf("%f",&pes);
-    set_pessoa(&test, nome, ida, pes);
+    Pessoa* test;    
+    test = set_pessoa();
     print_struct(test);
     return 0;
 }
 
-void print_struct(pessoa p){
-    printf("\nName: %s \nAge: %d \nWeight: %.2f\n",p.name,p.age,p.weight);
+void print_struct(const Pessoa* p){
+    printf("\nName: %s \nAge: %d \nWeight: %.2f\n",p -> name,p ->age,p-> weight);
 }
 
-void set_pessoa(pessoa *p, char name[25], int age, float weight){
-    (*p).age = age;
-    p -> weight = weight; //In that way we can pass the variable to the struct
-    strcpy( p -> name,name);
+Pessoa* set_pessoa(){
+    Pessoa* pe;
+    pe = (Pessoa*) malloc(sizeof(Pessoa));
+    printf("Input your name: ");
+    scanf("%s",pe-> name);
+    printf("\nInput your age: ");
+    scanf("%d",&pe->age);
+    printf("\nInput your weight: ");
+    scanf("%f",&pe->weight);
 }
 //The (*p).age and p -> weight are equivalent
