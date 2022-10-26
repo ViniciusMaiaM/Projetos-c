@@ -30,7 +30,7 @@ Cliente* preenche_cliente(){
     Cliente* clt;
     clt = (Cliente*) malloc(sizeof(Cliente));
     printf("\nInforme o nome do cliente: ");
-    scanf("%30[^\n]",clt -> nome_cliente);
+    scanf("%30[ ^\n]",clt -> nome_cliente);
     getchar();
     printf("\nInforme o codigo de seu banco: ");
     scanf("%10[^\n]",clt -> cod_banco);
