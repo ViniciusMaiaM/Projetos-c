@@ -23,6 +23,8 @@ int main(){
         }
         opc = menu();
     }
+    free(fulano);
+    return 0;
 }
 
 
