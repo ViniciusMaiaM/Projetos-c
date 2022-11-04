@@ -10,6 +10,6 @@ struct jogo{
 
 Jogo* cadastra_jogo(void);
 void grava_jogo(Jogo* game);
-void exibe_jogo(const Jogo* game);
-char menu(void);
+void exibe_jogo(Jogo* game);
+int menu(void);
 Jogo* busca_jogo(void);
