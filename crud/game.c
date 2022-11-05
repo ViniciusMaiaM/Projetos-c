@@ -127,10 +127,8 @@ Jogo* busca_jogo(){
 
     while(!feof(fp)){ //Busca até o final do arquivo
         fread(game, sizeof(Jogo),1,fp);
-        printf("entrou");
         if((game->cod == cod_bus) && (game->status != 'x')){ /*Verifica se o código é igual e o status*/
             fclose(fp);
-            printf("entrou 2");
     
             return game;
         }
