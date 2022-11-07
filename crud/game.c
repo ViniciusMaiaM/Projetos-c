@@ -21,6 +21,10 @@ int main(){
                 free(jogo);
                 break;
 
+            case 5:
+                lista_jogo();
+                break;
+
             default:
                 break;
         }
@@ -32,6 +36,7 @@ int main(){
 
 int menu(void){
     int op;
+    system("clear||cls");
     printf("\nMenu Principal\n");
     printf("1 - Cadastrar jogo\n");
     printf("2 - Pesquisar jogo\n");
@@ -78,8 +83,8 @@ void grava_jogo(Jogo* game){
 }
 
 void exibe_jogo(Jogo* game){
+    system("clear||cls");
     char situacao[20];
-
     if ((game == NULL) || game->status=='x'){
         printf("\nJogo não encontrado\n");
     }
@@ -102,10 +107,10 @@ void exibe_jogo(Jogo* game){
         else{
             strcpy(situacao,"Não reconhecido");
         }
+
         printf("Situação do jogo: %s",situacao);
     }
     printf("\nPressione enter...\n");
-    getchar();
     getchar();
 }
 
@@ -113,7 +118,7 @@ Jogo* busca_jogo(){
     FILE* fp;
     Jogo* game;
     int cod_bus;
-    
+    system("clear||cls");
     printf("\n - Busca Jogo - \n");
     printf("Informe o código: ");
     scanf("%d",&cod_bus);
@@ -137,4 +142,26 @@ Jogo* busca_jogo(){
     
     fclose(fp);
     return NULL;
+}
+
+void lista_jogo(){
+    FILE* fp;
+    Jogo* game;
+    printf("\n\tListagem\n");
+    game = (Jogo*) malloc(sizeof(Jogo));
+    fp = fopen("game.dat","rb");
+
+    if(fp == NULL) {
+        printf("Ocorreu um erro na abertura do arquivo, não é possivel continuar o programa");
+        exit(1);
+    } 
+
+    while(fread(game, sizeof(Jogo), 1, fp)){
+        if (game->status != 'x'){
+            exibe_jogo(game);
+        }
+    }
+
+    fclose(fp);
+    free(game);
 }

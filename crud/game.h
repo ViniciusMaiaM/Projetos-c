@@ -13,3 +13,4 @@ void grava_jogo(Jogo* game);
 void exibe_jogo(Jogo* game);
 int menu(void);
 Jogo* busca_jogo(void);
+void lista_jogo(void);
