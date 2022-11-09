@@ -11,6 +11,7 @@ struct jogo{
 Jogo* cadastra_jogo(void);
 void grava_jogo(Jogo* game);
 void exibe_jogo(Jogo* game);
-int menu(void);
+char menu(void);
 Jogo* busca_jogo(void);
 void lista_jogo(void);
+void exclui_jogo(Jogo* game); 
