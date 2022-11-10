@@ -36,6 +36,10 @@ int main(){
             case '5':
                 lista_jogo();
                 break;
+            
+            case '6':
+                lista_genero();
+                break;
 
             default:
                 break;
@@ -55,6 +59,7 @@ char menu(void){
     printf("3 - Alterar jogo\n");
     printf("4 - Excluir jogo\n");
     printf("5 - Listar todos os jogos\n");
+    printf("6 - Listar jogo por gênero\n");
     printf("0 - Encerrar programa\n");
     printf("\nEscolha sua opção: ");
     scanf("%c", &op);
@@ -252,4 +257,31 @@ void att_jogo(Jogo* game){
     }
 
     fclose(fp);
+}
+
+void lista_genero(void){
+    FILE* fp;
+    char gen[15];
+    Jogo* game;
+    printf("\n\tListagem por gênero\n");
+    game = (Jogo*) malloc(sizeof(Jogo));
+    fp = fopen("game.dat","rb");
+
+    if(fp==NULL){
+        printf("Ocorreu um erro na abertura do arquivo, não é possivel continuar o programa");
+        exit(1);
+    }
+
+    printf("\n Insira o gênero de jogo que vc quer buscar: ");
+    scanf(" %15[^\n]",gen);
+
+    while(fread(game,sizeof(Jogo),1,fp)){
+        if(strcmp(game->genero, gen) == 0){
+            exibe_jogo(game);
+        }
+    }
+
+    fclose(fp);
+    free(game);
+
 }

@@ -16,3 +16,4 @@ Jogo* busca_jogo(void);
 void lista_jogo(void);
 void exclui_jogo(Jogo* game); 
 void att_jogo(Jogo* game);
+void lista_genero(void);
