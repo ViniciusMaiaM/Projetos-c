@@ -21,6 +21,12 @@ int main(){
                 free(jogo);
                 break;
 
+            case '3':
+                jogo = busca_jogo();
+                
+                free(jogo);
+                break;
+
             case '4':
                 jogo = busca_jogo();
                 exclui_jogo(jogo);
@@ -207,4 +213,36 @@ void exclui_jogo(Jogo* game){
     printf("\nPressione enter...\n");
     getchar();
     getchar();
+}
+
+void att_jogo(Jogo* game){
+    FILE* fp;
+    char resp;
+    fp = fopen("game.dat","r+b");
+    if (fp == NULL){
+        printf("Ocorreu um erro na abertura do arquivo, não é possivel continuar o programa");
+        exit(1);
+    }
+
+    exibe_jogo(game);
+    printf("\nEste é o jogo que você quer excluir? ");
+    scanf("%c",&resp);
+    if(resp == 's' || resp == 'S'){
+        printf("Informe o código do jogo: ");
+        scanf("%d",&game->cod);
+        printf("Informe o nome do jogo: ");
+        scanf(" %15[^\n]",game->nome);
+        printf("Informe o gênero do jogo: ");
+        scanf(" %15[^\n]",game->genero);
+        printf("Informe a data de lançamento do jogo: ");
+        scanf(" %15[^\n]",game->data);
+        game->status = 'e';
+        fseek(fp,(-1)*sizeof(Jogo),SEEK_CUR);
+        fwrite(game,sizeof(Jogo),1,fp);
+        printf("\nAnimal editado com sucesso!\n");
+    }
+    else{
+        printf("\nOk, os dados não foram alterados!");
+    }
+    fclose(fp);
 }
