@@ -7,7 +7,7 @@ int main(){
     char op;
     Jogo* jogo;
     op = menu();
-    while(op != 0){
+    while(op != '0'){
         switch (op){
             case '1':
                 jogo = cadastra_jogo();
@@ -23,7 +23,7 @@ int main(){
 
             case '3':
                 jogo = busca_jogo();
-                
+                att_jogo(jogo);
                 free(jogo);
                 break;
 
@@ -218,6 +218,11 @@ void exclui_jogo(Jogo* game){
 void att_jogo(Jogo* game){
     FILE* fp;
     char resp;
+    if ((game == NULL) || game->status=='x'){
+        printf("\nJogo não encontrado\n");
+        exit(1);
+    }
+
     fp = fopen("game.dat","r+b");
     if (fp == NULL){
         printf("Ocorreu um erro na abertura do arquivo, não é possivel continuar o programa");
@@ -241,8 +246,10 @@ void att_jogo(Jogo* game){
         fwrite(game,sizeof(Jogo),1,fp);
         printf("\nAnimal editado com sucesso!\n");
     }
+
     else{
         printf("\nOk, os dados não foram alterados!");
     }
+
     fclose(fp);
 }
