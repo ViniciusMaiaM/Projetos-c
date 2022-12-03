@@ -23,9 +23,10 @@ void exclui_jogo(Jogo* game);
 void exibe_jogo(Jogo* game);
 void exibe_dinam(Din* din);
 void grava_jogo(Jogo* game);
-void lista_jogo(void);
+void lista_alfabet();
 void lista_genero(void);
-void lista_nome();
+void lista_id();
+void lista_jogo(void);
 
 char menu(void);
 

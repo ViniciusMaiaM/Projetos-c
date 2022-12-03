@@ -46,9 +46,13 @@ int main()
             break;
 
         case '7':
-            lista_nome();
+            lista_alfabet();
             break;
         
+        case '8':
+            lista_id();
+            break;
+
         default:
             break;
         }
@@ -70,6 +74,7 @@ char menu(void)
     printf("5 - Listar todos os jogos\n");
     printf("6 - Listar jogo por gênero\n");
     printf("7 - Listar jogo por nome\n");
+    printf("8 - Listar jogo por id\n");
     printf("0 - Encerrar programa\n");
     printf("\nEscolha sua opção: ");
     scanf("%c", &op);
@@ -325,7 +330,7 @@ void lista_genero(void)
     free(game);
 }
 
-void lista_nome(){
+void lista_alfabet(){
     FILE* fp;
     Jogo* game;
     Din* lista;
@@ -366,7 +371,7 @@ void lista_nome(){
                     novo->prox = NULL;
                 }
 
-                else if(strcmp(novo->nome,lista->nome) < 0){
+                else if(strcmp(novo->nome,lista->nome) < 0){ // Verificando se o primeiro é menor que o segundo
                     novo->prox = lista;
                     lista = novo;
                 }
@@ -443,5 +448,87 @@ void exibe_dinam(Din *din)
     }
     printf("\nPressione enter...\n");
     getchar();
-    getchar();
+}
+
+void lista_id(){
+    FILE* fp;
+    Jogo* game;
+    Din* lista;
+    Din* novo;
+
+    // int size;
+
+    if(access("game.dat",F_OK) != -1){
+        fp = fopen("game.dat","rb");
+        
+        if (fp == NULL){
+            printf("\nNão foi possível abrir o arquivo!");
+            exit(1);
+        }
+
+        else{
+            lista = NULL;
+            game = (Jogo*)malloc(sizeof(Jogo));
+
+            while(fread(game,sizeof(Jogo),1,fp)){
+                if(game->status == 'e'){
+                    novo = (Din*)malloc(sizeof(Din));
+
+                    // size = strlen(game->nome) + 1;
+                    novo->cod = game->cod;
+                    
+                    strcpy(novo->nome,game->nome);
+                    
+                    strcpy(novo->genero,game->genero);
+                    
+                    strcpy(novo->data,game->data);
+                    
+                    novo->status = game->status;
+                }
+
+                if(lista == NULL){
+                    lista = novo;
+                    novo->prox = NULL;
+                }
+
+                else if (novo->cod < lista->cod){
+                    novo->prox = lista;
+                    lista = novo;
+                }
+
+                else{
+                    Din* anterior = lista;
+                    Din* atual = lista->prox;
+
+                    while(atual != NULL && (atual->cod < novo->cod)){
+                        anterior = atual;
+                        atual = novo->prox;
+                    }
+
+                    anterior->prox = novo;
+                    novo->prox = atual;
+                }
+            }
+        }
+
+        free(game);
+
+        novo = lista;
+
+        while(novo != NULL){
+            exibe_dinam(novo);
+            novo = novo->prox;
+        }
+
+        novo = lista;
+
+        while(lista != NULL){
+            lista = lista->prox;
+            free(novo);
+            novo = lista;
+        }
+
+        fclose(fp);
+
+    }
 }
