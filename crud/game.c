@@ -366,7 +366,7 @@ void lista_nome(){
                     novo->prox = NULL;
                 }
 
-                else if(strcmp(novo->nome,game->nome) > 0){
+                else if(strcmp(novo->nome,lista->nome) < 0){
                     novo->prox = lista;
                     lista = novo;
                 }
@@ -410,7 +410,7 @@ void lista_nome(){
 
 void exibe_dinam(Din *din)
 {
-    system("clear||cls");
+    printf("\n\n");
     char situacao[20];
     if ((din == NULL) || din->status == 'x')
     {
