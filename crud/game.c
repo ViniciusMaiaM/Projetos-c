@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "game.h"
 
 int main()
@@ -44,6 +45,10 @@ int main()
             lista_genero();
             break;
 
+        case '7':
+            lista_nome();
+            break;
+        
         default:
             break;
         }
@@ -64,6 +69,7 @@ char menu(void)
     printf("4 - Excluir jogo\n");
     printf("5 - Listar todos os jogos\n");
     printf("6 - Listar jogo por gênero\n");
+    printf("7 - Listar jogo por nome\n");
     printf("0 - Encerrar programa\n");
     printf("\nEscolha sua opção: ");
     scanf("%c", &op);
@@ -317,4 +323,125 @@ void lista_genero(void)
 
     fclose(fp);
     free(game);
+}
+
+void lista_nome(){
+    FILE* fp;
+    Jogo* game;
+    Din* lista;
+    Din* novo;
+
+    // int size;
+
+    if(access("game.dat",F_OK) != -1){
+        fp = fopen("game.dat","rb");
+        
+        if (fp == NULL){
+            printf("\nNão foi possível abrir o arquivo!");
+            exit(1);
+        }
+
+        else{
+            lista = NULL;
+            game = (Jogo*)malloc(sizeof(Jogo));
+
+            while(fread(game,sizeof(Jogo),1,fp)){
+                if(game->status == 'e'){
+                    novo = (Din*)malloc(sizeof(Din));
+
+                    // size = strlen(game->nome) + 1;
+                    novo->cod = game->cod;
+                    
+                    strcpy(novo->nome,game->nome);
+                    
+                    strcpy(novo->genero,game->genero);
+                    
+                    strcpy(novo->data,game->data);
+                    
+                    novo->status = game->status;
+                }
+
+                if(lista == NULL){
+                    lista = novo;
+                    novo->prox = NULL;
+                }
+
+                else if(strcmp(novo->nome,game->nome) > 0){
+                    novo->prox = lista;
+                    lista = novo;
+                }
+
+                else{
+                    Din* anterior = lista;
+                    Din* atual = lista->prox;
+
+                    while(atual != NULL && strcmp(atual->nome,novo->nome) < 0){
+                        anterior = atual;
+                        atual = novo->prox;
+                    }
+
+                    anterior->prox = novo;
+                    novo->prox = atual;
+                }
+            }
+        }
+
+        free(game);
+
+        novo = lista;
+
+        while(novo != NULL){
+            exibe_dinam(novo);
+            novo = novo->prox;
+        }
+
+        novo = lista;
+
+        while(lista != NULL){
+            lista = lista->prox;
+            free(novo);
+            novo = lista;
+        }
+
+        fclose(fp);
+
+    }
+}
+
+void exibe_dinam(Din *din)
+{
+    system("clear||cls");
+    char situacao[20];
+    if ((din == NULL) || din->status == 'x')
+    {
+        printf("\nJogo não encontrado\n");
+    }
+
+    else
+    {
+        printf("\nCódigo: %d\n", din->cod);
+        printf("Nome: %s\n", din->nome);
+        printf("Gênero: %s\n", din->genero);
+        printf("Data lançamento: %s\n", din->data);
+
+        if (din->status == 'e')
+        {
+            strcpy(situacao, "Em estoque");
+        }
+
+        else if (din->status == 'f')
+        {
+            strcpy(situacao, "Fora de estoque");
+        }
+
+        else
+        {
+            strcpy(situacao, "Não reconhecido");
+        }
+
+        printf("Situação do jogo: %s", situacao);
+    }
+    printf("\nPressione enter...\n");
+    getchar();
+    getchar();
 }
